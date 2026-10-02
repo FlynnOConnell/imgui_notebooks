@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imgui_notebooks"
+version = "0.1.0"
+description = "An Open Notebook menu for imgui-bundle apps: jupyter and marimo notebooks from configurable sources, on this machine or over ssh."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Flynn OConnell", email = "flynnoconnell@gmail.com" }]
+keywords = ["imgui", "imgui-bundle", "hello-imgui", "jupyter", "marimo", "notebook", "gui", "widget"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "imgui-bundle>=1.92,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+servers = ["jupyterlab", "marimo"]
+
+[project.scripts]
+imgui-notebooks = "imgui_notebooks.runner:main"
+
+[project.urls]
+Homepage = "https://github.com/FlynnOConnell/imgui_notebooks"
+Source = "https://github.com/FlynnOConnell/imgui_notebooks"
+Issues = "https://github.com/FlynnOConnell/imgui_notebooks/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+imgui_notebooks = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
